@@ -7,9 +7,13 @@ public class Unit : MonoBehaviour
     private Vector3 targetPosition;
     [SerializeField] private Animator unitAnimator;
 
-    private void Move(Vector3 targetPosition){
+    public void Move(Vector3 targetPosition){
         this.targetPosition = targetPosition;
         
+    }
+    void Awake()
+    {
+        targetPosition = transform.position;
     }
 
     void Update()
@@ -33,11 +37,7 @@ public class Unit : MonoBehaviour
 
         }
 
-        if(Input.GetMouseButtonDown(0)){
-            Move(MouseWorld.GetPosition());
-                //Move(new Vector3(4,0,4));
 
-        }
         
 
     }
