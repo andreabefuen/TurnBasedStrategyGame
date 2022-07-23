@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    private Vector3 targetPosition;
     [SerializeField] private Animator unitAnimator;
+
+    private Vector3 targetPosition;
+    private GridPosition gridPosition;
 
     public void Move(Vector3 targetPosition){
         this.targetPosition = targetPosition;
@@ -14,6 +16,11 @@ public class Unit : MonoBehaviour
     void Awake()
     {
         targetPosition = transform.position;
+    }
+    void Start()
+    {
+        gridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
+        LevelGrid.Instance.AddUnitAtGridPosition(gridPosition, this);
     }
 
     void Update()
@@ -37,8 +44,13 @@ public class Unit : MonoBehaviour
 
         }
 
-
+        GridPosition newGridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
         
+        if(gridPosition != newGridPosition){
+            LevelGrid.Instance.UnitMovedGridPosition(this, newGridPosition, gridPosition);
+            gridPosition= newGridPosition;
+    
+        }
 
     }
 }
