@@ -272,8 +272,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
-  m_LocalPosition: {x: 0, y: 7, z: -10}
+  m_LocalRotation: {x: 0.35826394, y: -3e-45, z: 1e-45, w: 0.93362033}
+  m_LocalPosition: {x: 0, y: 9.000007, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -471,6 +471,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 455629633}
+  - component: {fileID: 455629634}
   m_Layer: 0
   m_Name: CameraController
   m_TagString: Untagged
@@ -493,6 +494,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &455629634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455629632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86776667cee0741539271d321ce8b9e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invertZoomControl: 0
+  moveSpeed: 10
+  rotationSpeed: 100
+  zoomAmount: 1
+  zoomSpeed: 5
+  virtualCamera: {fileID: 1064885999}
 --- !u!1 &604748666
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,7 +642,7 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 0}
+  m_LookAt: {fileID: 455629633}
   m_Follow: {fileID: 455629633}
   m_Lens:
     FieldOfView: 50
@@ -634,7 +653,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.984, y: 1}
+    m_SensorSize: {x: 0.658, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -650,8 +669,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1064885998}
-  m_LocalRotation: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
-  m_LocalPosition: {x: 0, y: 7, z: -10}
+  m_LocalRotation: {x: 0.35826394, y: -3e-45, z: 1e-45, w: 0.93362033}
+  m_LocalPosition: {x: 0, y: 9.000007, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -813,7 +832,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 7, z: -10}
+  m_FollowOffset: {x: 0, y: 9.000007, z: -10}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
