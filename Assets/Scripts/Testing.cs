@@ -5,6 +5,8 @@ using UnityEngine;
 public class Testing : MonoBehaviour
 {
     [SerializeField] private Transform gridDebugObjectPrefab;
+
+    [SerializeField] private Unit unit;
     private GridSystem gridSystem;
     void Start()
     {
@@ -18,7 +20,9 @@ public class Testing : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log(gridSystem.GetGridPosition(MouseWorld.GetPosition()));
+        if(Input.GetKeyDown(KeyCode.T)){
+            unit.GetMoveAction().GetValidActionGridPositionList();
+        }
     }
 
 }
