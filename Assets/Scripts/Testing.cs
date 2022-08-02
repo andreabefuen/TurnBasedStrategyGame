@@ -16,12 +16,15 @@ public class Testing : MonoBehaviour
 
         Debug.Log(new GridPosition(5,7));
         */
+
     }
 
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.T)){
-            unit.GetMoveAction().GetValidActionGridPositionList();
+            GridSystemVisual.Instance.HideAllGridPositions();
+            GridSystemVisual.Instance.ShowAllPositionsList(unit.GetMoveAction().GetValidActionGridPositionList());
+
         }
     }
 
