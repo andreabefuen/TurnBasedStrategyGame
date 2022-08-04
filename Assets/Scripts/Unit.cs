@@ -9,13 +9,21 @@ public class Unit : MonoBehaviour
     private MoveAction moveAction;
 
     private SpinAction spinAction;
+    private BaseAction[] baseActionArray;
 
-    void Start()
+    void Awake()
     {
-        gridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
-        LevelGrid.Instance.AddUnitAtGridPosition(gridPosition, this);
         moveAction = GetComponent<MoveAction>();
         spinAction = GetComponent<SpinAction>();
+        baseActionArray = GetComponents<BaseAction>();
+
+    }
+    void Start()
+    {
+        
+        gridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
+        LevelGrid.Instance.AddUnitAtGridPosition(gridPosition, this);
+
     }
 
     void Update()
@@ -41,5 +49,9 @@ public class Unit : MonoBehaviour
     }
     public GridPosition GetGridPosition(){
         return gridPosition;
+    }
+
+    public BaseAction[] GetBaseActionArray(){
+        return baseActionArray;
     }
 }
