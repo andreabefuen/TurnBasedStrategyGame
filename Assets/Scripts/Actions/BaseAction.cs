@@ -20,5 +20,9 @@ public abstract class BaseAction : MonoBehaviour
          List<GridPosition> validPositions = GetValidActionGridPositionList();
         return validPositions.Contains(gridPos);
      }
-     public abstract List<GridPosition> GetValidActionGridPositionList();
+    public abstract List<GridPosition> GetValidActionGridPositionList();
+
+    public virtual int GetActionPointsCost(){
+        return 1;
+    }
 }
