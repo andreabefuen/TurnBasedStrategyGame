@@ -37,18 +37,17 @@ public class MoveAction : BaseAction
         }
         else{
             unitAnimator.SetBool("isWalking", false);
-            isActive = false;
-            onActionComplete();
+            ActionCompleted();
 
         }
         float rotateSpeed = 10f;
         transform.forward = Vector3.Lerp(transform.forward, moveDirection, Time.deltaTime * rotateSpeed);
     }
     public override void TakeAction(GridPosition gridPos, Action onActionComplete){
-        this.onActionComplete = onActionComplete;
+        ActionStart(onActionComplete);
+
         this.targetPosition = LevelGrid.Instance.GetWorldPosition(gridPos);
-        isActive = true;
-        
+                
     }
      
     public override List<GridPosition> GetValidActionGridPositionList(){
@@ -71,7 +70,7 @@ public class MoveAction : BaseAction
                 if(LevelGrid.Instance.HasAnyUnitInGridPosition(testGridPosition)){
                     continue;
                 }
-                Debug.Log(testGridPosition);
+                
 
                 validGridPositions.Add(testGridPosition);
                 

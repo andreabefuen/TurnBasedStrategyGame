@@ -25,4 +25,13 @@ public abstract class BaseAction : MonoBehaviour
     public virtual int GetActionPointsCost(){
         return 1;
     }
+
+    protected void ActionStart(Action onActionComplete){
+        isActive = true;
+        this.onActionComplete = onActionComplete;
+    }
+    protected void ActionCompleted(){
+        isActive = false;
+        onActionComplete();
+    }
 }
