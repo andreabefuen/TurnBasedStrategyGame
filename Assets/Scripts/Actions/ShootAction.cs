@@ -10,7 +10,14 @@ public class ShootAction : BaseAction
         Shooting,
         Cooloff,
     }
-    public event EventHandler OnShoot;
+
+    //C# standard
+    public event EventHandler<OnShootEventArgs> OnShoot;
+
+    public class OnShootEventArgs : EventArgs{
+        public Unit targetUnit;
+        public Unit shootingUnit;
+    }
     private States state;
     private float stateTimer;
     private int maxShootDistance = 7;
@@ -119,7 +126,9 @@ public class ShootAction : BaseAction
     }
 
     public void Shoot(){
-        OnShoot?.Invoke(this, EventArgs.Empty);
+        OnShoot?.Invoke(this, new OnShootEventArgs{
+            targetUnit = targetUnit, shootingUnit = unit 
+        });
         targetUnit.Damage();
 
     }
