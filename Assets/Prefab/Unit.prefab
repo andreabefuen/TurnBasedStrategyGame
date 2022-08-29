@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 8699857180139531779}
   - component: {fileID: 3352403239488207003}
   - component: {fileID: 2720928455859813612}
+  - component: {fileID: 3916784919194387809}
+  - component: {fileID: 405491636921068093}
   m_Layer: 7
   m_Name: Unit
   m_TagString: Untagged
@@ -118,6 +120,34 @@ MonoBehaviour:
   bulletProjectilePrefab: {fileID: 3271386755950447761, guid: b0d04d22d06ad4d4d8b2f808b28ecfca,
     type: 3}
   shootPointTransform: {fileID: 5464785790830126821}
+--- !u!114 &3916784919194387809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4239358455447611982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db0b295a5bcac4935ac1519d4888f8bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+--- !u!114 &405491636921068093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4239358455447611982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e92637fec7b14468eb4d5f166ac20195, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ragdollPrefab: {fileID: 4239358455447611976, guid: c53b16c095b0b400aaafdd3d51d85b56,
+    type: 3}
+  originalRootBone: {fileID: 4234684172533850228}
 --- !u!1 &7164568316738688523
 GameObject:
   m_ObjectHideFlags: 0
@@ -660,6 +690,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 4234879846183444563}
   m_SourcePrefab: {fileID: 100100000, guid: 2f3e27eecb190e44a9af50723c394274, type: 3}
+--- !u!4 &4234684172533850228 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4966341056781146, guid: 2f3e27eecb190e44a9af50723c394274,
+    type: 3}
+  m_PrefabInstance: {fileID: 4239358455730453294}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4234927514448180334 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4580766925885248, guid: 2f3e27eecb190e44a9af50723c394274,

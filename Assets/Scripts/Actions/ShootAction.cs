@@ -22,6 +22,8 @@ public class ShootAction : BaseAction
     private float stateTimer;
     private int maxShootDistance = 7;
 
+    private int damageAmount = 40;
+
     private Unit targetUnit;
     private bool canShootBullet;
     void Update()
@@ -129,7 +131,7 @@ public class ShootAction : BaseAction
         OnShoot?.Invoke(this, new OnShootEventArgs{
             targetUnit = targetUnit, shootingUnit = unit 
         });
-        targetUnit.Damage();
+        targetUnit.Damage(damageAmount);
 
     }
 }
