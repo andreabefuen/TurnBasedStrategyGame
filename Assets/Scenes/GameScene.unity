@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.180284, g: 0.2257149, b: 0.3069222, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028468, g: 0.22571577, b: 0.3069237, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1508,7 +1508,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.8302583, y: 1}
+    m_SensorSize: {x: 1.6881868, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1686,6 +1686,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridSystemVisualSinglePrefab: {fileID: 1491055643090941274, guid: 0a9c9395a6ed04b869253e557b68acfc,
     type: 3}
+  gridVisualTypeMaterialList:
+  - gridVisualType: 0
+    material: {fileID: 2100000, guid: 59a1ddd4a10d2411e9b6e5a405f46206, type: 2}
+  - gridVisualType: 2
+    material: {fileID: 2100000, guid: 82cfad0c18c4ac14ba87958e895490a1, type: 2}
+  - gridVisualType: 1
+    material: {fileID: 2100000, guid: 1dd1c1d13219caf449772828a385d414, type: 2}
+  - gridVisualType: 3
+    material: {fileID: 2100000, guid: 1c1888d7180a87644a5264bdf35e8fff, type: 2}
+  - gridVisualType: 4
+    material: {fileID: 2100000, guid: 3e88f52d2c1e1cf4ba84f75891cce82b, type: 2}
 --- !u!4 &1088545568
 Transform:
   m_ObjectHideFlags: 0

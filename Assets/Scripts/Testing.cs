@@ -23,7 +23,7 @@ public class Testing : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.T)){
             GridSystemVisual.Instance.HideAllGridPositions();
-            GridSystemVisual.Instance.ShowAllPositionsList(unit.GetMoveAction().GetValidActionGridPositionList());
+           // GridSystemVisual.Instance.ShowAllPositionsList(unit.GetMoveAction().GetValidActionGridPositionList());
 
         }
     }
