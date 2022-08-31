@@ -5,9 +5,13 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    [SerializeField] private const int actionPointsMax = 2;
+    [SerializeField] private const int ACTION_POINTS_MAX = 2;
 
     public static event EventHandler OnAnyActionPointsChanged;
+
+    public static event EventHandler OnAnyUnitSpawned;
+    public static event EventHandler OnAnyUnitDead;
+
 
     [SerializeField] private bool isEnemy;
 
@@ -18,7 +22,7 @@ public class Unit : MonoBehaviour
 
     private SpinAction spinAction;
     private BaseAction[] baseActionArray;
-    private int actionPoints = actionPointsMax;
+    private int actionPoints = ACTION_POINTS_MAX;
 
     void Awake()
     {
@@ -37,6 +41,8 @@ public class Unit : MonoBehaviour
         TurnSystem.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
 
         healthSystem.OnDeath += HealthSystem_OnDeath;
+
+        OnAnyUnitSpawned?.Invoke(this, EventArgs.Empty);
 
     }
 
@@ -101,7 +107,7 @@ public class Unit : MonoBehaviour
     private void TurnSystem_OnTurnChanged(object sender, EventArgs e){
         if((IsEnemy() && !TurnSystem.Instance.IsPlayerTurn())|| 
         (!IsEnemy() && !TurnSystem.Instance.IsPlayerTurn())){
-            actionPoints = actionPointsMax;
+            actionPoints = ACTION_POINTS_MAX;
             OnAnyActionPointsChanged?.Invoke(this, EventArgs.Empty);
         }
     }
@@ -109,6 +115,8 @@ public class Unit : MonoBehaviour
     private void HealthSystem_OnDeath(object sender, EventArgs e){
         LevelGrid.Instance.RemoveUnitAtGridPosition(gridPosition,this);
         Destroy(gameObject);
+
+        OnAnyUnitDead?.Invoke(this, EventArgs.Empty);
     }
 
     public bool IsEnemy(){
