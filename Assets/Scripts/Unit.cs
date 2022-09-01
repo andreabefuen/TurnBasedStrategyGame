@@ -19,6 +19,7 @@ public class Unit : MonoBehaviour
 
     private HealthSystem healthSystem;
     private MoveAction moveAction;
+    private ShootAction shootAction;
 
     private SpinAction spinAction;
     private BaseAction[] baseActionArray;
@@ -29,6 +30,8 @@ public class Unit : MonoBehaviour
         healthSystem = GetComponent<HealthSystem>();
         moveAction = GetComponent<MoveAction>();
         spinAction = GetComponent<SpinAction>();
+        shootAction = GetComponent<ShootAction>();
+
         baseActionArray = GetComponents<BaseAction>();
 
     }
@@ -65,6 +68,9 @@ public class Unit : MonoBehaviour
     }
     public SpinAction GetSpinAction(){
         return spinAction;
+    }
+    public ShootAction GetShootAction(){
+        return shootAction;
     }
     public GridPosition GetGridPosition(){
         return gridPosition;
@@ -126,5 +132,9 @@ public class Unit : MonoBehaviour
     public void Damage(int damageAmount){
         Debug.Log(transform + " damaged!");
         healthSystem.Damage(damageAmount);
+    }
+
+    public float GetHealthNormalized(){
+        return healthSystem.GetHealthNormalized();
     }
 }
