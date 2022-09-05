@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    [SerializeField] private const int ACTION_POINTS_MAX = 2;
+    [SerializeField] private const int ACTION_POINTS_MAX = 9;
 
     public static event EventHandler OnAnyActionPointsChanged;
 
