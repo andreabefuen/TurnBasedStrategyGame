@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestructableObject : MonoBehaviour
+public class DestructableObject : MonoBehaviour, IDestructable
 {
     public static event EventHandler OnAnyDestroyed;
     [SerializeField] private Transform destroyedPrefab;
