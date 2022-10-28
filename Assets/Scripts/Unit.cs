@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    [SerializeField] private const int ACTION_POINTS_MAX = 2;
+    private const int ACTION_POINTS_MAX = 3;
 
     public static event EventHandler OnAnyActionPointsChanged;
 
@@ -131,5 +131,9 @@ public class Unit : MonoBehaviour
 
     public float GetHealthNormalized(){
         return healthSystem.GetHealthNormalized();
+    }
+
+    public void HealUnit(int healAmount){
+        healthSystem.Heal(healAmount);
     }
 }

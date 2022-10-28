@@ -13,6 +13,7 @@ public class UnitActionSystem : MonoBehaviour
     public event EventHandler<bool> OnBusyChanged;
     public event EventHandler OnActionStarted;
 
+
     [SerializeField] private Unit selectedUnit;
     [SerializeField] private LayerMask unitsLayerMask;
 
@@ -29,7 +30,15 @@ public class UnitActionSystem : MonoBehaviour
     }
     void Start()
     {
+        UnitManager.Instance.OnUnitRemovedFromFriendlyList += UnitManager_OnUnitRemovedFromFriendlyList;
         SetSelectedUnit(selectedUnit);
+    }
+
+    private void UnitManager_OnUnitRemovedFromFriendlyList(object sender, EventArgs e)
+    {
+        Unit unit = UnitManager.Instance.GetFriendlyUnitList()[0];
+        SetSelectedUnit(unit);
+
     }
 
     void Update()

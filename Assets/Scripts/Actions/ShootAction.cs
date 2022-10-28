@@ -64,7 +64,7 @@ public class ShootAction : BaseAction
         switch(state){
             case States.Aiming:
                 state = States.Shooting;
-                float shootingStateTime = .1f;
+                float shootingStateTime = .2f;
                 stateTimer = shootingStateTime;
                 break;
             case States.Shooting:

@@ -9,6 +9,8 @@ public class UnitManager : MonoBehaviour
     private List<Unit> unitList;
     private List<Unit> friendlyUnitList;
     private List<Unit> enemyUnitList;
+
+    public event EventHandler OnUnitRemovedFromFriendlyList;
     void Awake()
     {
         if(Instance !=null){
@@ -41,6 +43,7 @@ public class UnitManager : MonoBehaviour
         }
         else{
             friendlyUnitList.Remove(unit);
+            OnUnitRemovedFromFriendlyList?.Invoke(this, EventArgs.Empty);
         }
 
     }

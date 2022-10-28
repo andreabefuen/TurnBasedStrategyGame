@@ -5,7 +5,13 @@ using UnityEngine;
 
 public class LevelGrid : MonoBehaviour
 {
-    public event EventHandler OnAnyUnitMoveGridPosition;
+    public event EventHandler<OnAnyUnitMovedGridPositionEventArgs> OnAnyUnitMoveGridPosition;
+    public class OnAnyUnitMovedGridPositionEventArgs : EventArgs{
+        public Unit unit;
+        public GridPosition fromGridPos;
+        public GridPosition toGridPos;
+    }
+    public event EventHandler OnAnyUnitInteractGridPosition;
     public static LevelGrid Instance {get; private set;}
     [SerializeField] private Transform gridDebugObjectPrefab;
 
@@ -50,7 +56,12 @@ public class LevelGrid : MonoBehaviour
         RemoveUnitAtGridPosition(oldGridPosition, unit);
         AddUnitAtGridPosition(newGridPosition, unit);
 
-        OnAnyUnitMoveGridPosition?.Invoke(this, EventArgs.Empty);
+        OnAnyUnitMoveGridPosition?.Invoke(this, new OnAnyUnitMovedGridPositionEventArgs
+        {
+            unit = unit,
+            fromGridPos = oldGridPosition,
+            toGridPos = newGridPosition,
+        });
     }
 
     public GridPosition GetGridPosition(Vector3 worldPosition) => gridSystem.GetGridPosition(worldPosition);
@@ -77,5 +88,12 @@ public class LevelGrid : MonoBehaviour
     public void SetInteractableAtGridPosition(GridPosition gridPosition, IInteractable interactable){
         GridObject gridObject = gridSystem.GetGridObject(gridPosition);
         gridObject.SetInteractable(interactable);
+    }
+
+    public void ClearInteractableAtGridPosition(GridPosition gridPosition){
+        GridObject gridObject = gridSystem.GetGridObject(gridPosition);
+        gridObject.ClearInteractable();
+        OnAnyUnitInteractGridPosition?.Invoke(this, EventArgs.Empty);
+
     }
 }
