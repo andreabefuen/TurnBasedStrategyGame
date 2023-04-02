@@ -11,6 +11,8 @@ public class UnitManager : MonoBehaviour
     private List<Unit> enemyUnitList;
 
     public event EventHandler OnUnitRemovedFromFriendlyList;
+    public event EventHandler OnAllEnemiesDead;
+    public event EventHandler OnAllUnitsDead;
     void Awake()
     {
         if(Instance !=null){
@@ -40,10 +42,20 @@ public class UnitManager : MonoBehaviour
 
         if(unit.IsEnemy()){
             enemyUnitList.Remove(unit);
+            LevelSettings.Instance.RemoveEnemyFromAllEnemiesInLevel(unit.gameObject);
+            Debug.Log("enemy less: " + LevelSettings.Instance.GetAllEnemiesInLevel().Count);
+            if(LevelSettings.Instance.GetAllEnemiesInLevel().Count == 0){
+                OnAllEnemiesDead?.Invoke(this, EventArgs.Empty);
+            }
         }
         else{
             friendlyUnitList.Remove(unit);
-            OnUnitRemovedFromFriendlyList?.Invoke(this, EventArgs.Empty);
+            if(friendlyUnitList.Count == 0){
+                OnAllUnitsDead?.Invoke(this, EventArgs.Empty);
+            }
+            else{
+                OnUnitRemovedFromFriendlyList?.Invoke(this, EventArgs.Empty);
+            }
         }
 
     }

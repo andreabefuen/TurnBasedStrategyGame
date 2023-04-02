@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class LevelSettings : MonoBehaviour
 {
+    public static LevelSettings Instance {get; private set;}
+
     [System.Serializable]
     public class DoorElementsHided{
         public Door doorTrigger;
@@ -19,9 +21,19 @@ public class LevelSettings : MonoBehaviour
         public List<GameObject> enemies;
     }
 
+    private List<GameObject> AllEnemiesInLevel = new List<GameObject>();
+
     [SerializeField] private List<DoorElementsHided> hiders;
     [SerializeField] private List<CloseElementsHided> hidersClose;
 
+    void Awake()
+    {
+        if(Instance !=null){
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
     private void Start(){
         foreach(DoorElementsHided doorElements in hiders){
             doorElements.doorTrigger.OnDoorOpened += (object sender, EventArgs e) =>
@@ -29,6 +41,10 @@ public class LevelSettings : MonoBehaviour
                 SetActiveGameObjectList(doorElements.hiders, false);
                 SetActiveGameObjectList(doorElements.enemies, true);
             };
+            AllEnemiesInLevel.AddRange(doorElements.enemies);
+        }
+        foreach(CloseElementsHided closeElement in hidersClose){
+            AllEnemiesInLevel.AddRange(closeElement.enemies);
         }
 
         LevelGrid.Instance.OnAnyUnitMoveGridPosition += LevelGrid_OnAnyUnitMoveGridPosition;
@@ -52,6 +68,14 @@ public class LevelSettings : MonoBehaviour
         {
             gameObject.SetActive(isActive);
         }
+    }
+
+    public List<GameObject> GetAllEnemiesInLevel(){
+        return AllEnemiesInLevel;
+    }
+
+    public void RemoveEnemyFromAllEnemiesInLevel(GameObject unitToRemove){
+        AllEnemiesInLevel.Remove(unitToRemove);
     }
 
 }
